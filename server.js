@@ -43,10 +43,10 @@ app.get('/api/orders', async (req, res) => {
 
 let orders = [];
 
-const socket = io('https://higame.onrender.com:5000');
+const socket = io('https://higame.onrender.com');
 
 window.onload = async () => {
-  const res = await fetch('https://higame.onrender.com:5000/api/orders');
+  const res = await fetch('https://higame.onrender.com/api/orders');
   orders = await res.json();
   renderOrders(orders);
 
@@ -96,7 +96,7 @@ function applyFilters() {
 }
 
 async function updateStatus(id, status) {
-  await fetch(`https://higame.onrender.com:5000/api/order/${id}`, {
+  await fetch(`https://higame.onrender.com/api/order/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ status })
